@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>y-z-f</Authors>
-    <Company>江苏斯诺科技有限公司</Company>
+    <Company>江苏斯诺物联科技有限公司</Company>
     <Version>2.0.0-beta2</Version>
     <Description>基于Dapper的仓储库</Description>
     <PackageIconUrl>http://avatars0.githubusercontent.com/u/16951448?v=3&amp;s=70</PackageIconUrl>
