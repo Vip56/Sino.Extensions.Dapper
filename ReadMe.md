@@ -2,8 +2,13 @@
 用Dapper提供MySQL数据仓储的默认实现    
 
 [![Build status](https://ci.appveyor.com/api/projects/status/o4y6ne8ix0tot0vq?svg=true)](https://ci.appveyor.com/project/vip56/sino-extensions-dapper)
+[![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg?style=plastic)](https://www.nuget.org/packages/Sino.Extensions.Dapper)
 
 ## 使用方式
+```
+Install-Package Sino.Extensions.Dapper
+```
+
 在`Startup`中进行配置，增加用于读和写的MySQL连接字符串
 ```
 string readConStr = Configuration.GetConnectionString("ReadConnectionString");
