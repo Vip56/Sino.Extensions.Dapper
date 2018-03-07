@@ -1,5 +1,7 @@
 ## Sino.Extensions.Dapper
-用Dapper提供MySQL数据仓储的默认实现  
+用Dapper提供MySQL数据仓储的默认实现    
+
+[![Build status](https://ci.appveyor.com/api/projects/status/o4y6ne8ix0tot0vq?svg=true)](https://ci.appveyor.com/project/vip56/sino-extensions-dapper)
 
 ## 使用方式
 在`Startup`中进行配置，增加用于读和写的MySQL连接字符串
