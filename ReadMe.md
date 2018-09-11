@@ -25,3 +25,4 @@ services.AddDapper(writeConStr, readConStr);
 
 ## 版本更新记录  
 * 2018.3.7 支持asp.net core 2.0 by y-z-f
+* 2018.9.11 升级相关类库
