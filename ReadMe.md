@@ -20,7 +20,8 @@ services.AddDapper(writeConStr, readConStr);
 来强制指定需要使用写数据库或读数据库。
 
 ## 其他
-其中`Sino.Extensions.Dapper.UnitTest`项目中包含了如何使用`Dapper`实现多表查询等演示代码。
+其中`Sino.Extensions.Dapper.UnitTest`项目中包含了如何使用`Dapper`实现多表查询等演示代码。   
+因为`MySql.Data`官方库升级后默认使用SSL所以连接字符串中请放置`SslMode=none`
 
 
 ## 版本更新记录  
