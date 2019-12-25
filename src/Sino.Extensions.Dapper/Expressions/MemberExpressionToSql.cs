@@ -8,25 +8,7 @@ namespace Sino.Extensions.Dapper.Expressions
     {
         private string GetTableName(string s)
         {
-            string name = "";
-            var length = s.Length;
-            var last = s.Substring(length - 1, 1);
-            if (last == "y")
-            {
-                name = s.Substring(0, length - 1) + "ies";
-            }
-            else if (last == "o")
-            {
-                name = s + "es";
-            }
-            else if (last == "s")
-            {
-                name = s;
-            }
-            else
-            {
-                name = s + "s";
-            }
+            string name = ExpressionHelper.GetTableName(s);
             return name;
         }
 

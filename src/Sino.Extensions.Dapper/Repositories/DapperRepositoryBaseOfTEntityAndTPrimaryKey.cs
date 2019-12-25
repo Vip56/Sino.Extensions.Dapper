@@ -38,7 +38,7 @@ namespace Sino.Dapper.Repositories
             Configurationn = configuration;
             WriteConnection = new MySqlConnection(Configurationn.WriteConnectionString);
             ReadConnection = new MySqlConnection(Configurationn.ReadConnectionString);
-            SqlMapperExtensions.IsOriginalTableName = IsOriginalTableName;
+            ExpressionHelper.IsOriginalTableName = IsOriginalTableName;
             Connection = new DapperConnection(WriteConnection, ReadConnection);
         }
 
