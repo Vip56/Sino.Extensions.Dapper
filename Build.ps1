@@ -20,4 +20,4 @@ $revision = [convert]::ToInt32($revision, 10)
 
 exec { & dotnet pack .\src\Sino.Extensions.Dapper -c Release -o .\artifacts --version-suffix=$revision }
 
-exec { & dotnet nuget push .\src\Sino.Extensions.Dapper\artifacts\*.nupkg -k cccc9d81-f2a8-4230-92ef-5516f045ce45 -s https://api.nuget.org/v3/index.json }
+exec { & dotnet nuget push .\src\Sino.Extensions.Dapper\artifacts\*.nupkg -k oy2bsfqlhnjxps44xdlqc3czk7z5seye3jukjxiorixdui -s https://api.nuget.org/v3/index.json }
