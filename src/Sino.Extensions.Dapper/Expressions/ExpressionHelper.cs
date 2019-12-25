@@ -1,10 +1,42 @@
-﻿using System;
+﻿using Sino.Dapper;
+using System;
 using System.Linq.Expressions;
 
 namespace Sino.Extensions.Dapper.Expressions
 {
     public static class ExpressionHelper
     {
+        /// <summary>
+        /// 是否原始表名
+        /// </summary>
+        public static bool IsOriginalTableName { get; set; }
+        public static string GetTableName(string s)
+        {
+            string name = s;
+            if (!IsOriginalTableName)
+            {
+                var length = s.Length;
+                var last = s.Substring(length - 1, 1);
+                if (last == "y")
+                {
+                    name = s.Substring(0, length - 1) + "ies";
+                }
+                else if (last == "o")
+                {
+                    name = s + "es";
+                }
+                else if (last == "s")
+                {
+                    name = s;
+                }
+                else
+                {
+                    name = s + "s";
+                }
+            }
+            return name;
+        }
+
         private static ExpressionToSqlmpl<T> CreateExpressionToSql<T>()
         {
             return new ExpressionToSqlmpl<T>();

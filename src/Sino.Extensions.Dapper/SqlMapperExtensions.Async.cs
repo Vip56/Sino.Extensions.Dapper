@@ -11,16 +11,12 @@ using System.Collections.Concurrent;
 using DataException = System.InvalidOperationException;
 using System.Threading;
 using System.Reflection.Emit;
+using Sino.Extensions.Dapper.Expressions;
 
 namespace Sino.Dapper
 {
     public static partial class SqlMapperExtensions
     {
-        /// <summary>
-        /// 是否原始表名
-        /// </summary>
-        public static bool IsOriginalTableName { get; set; } = false;
-
         public interface IProxy //must be kept public
         {
             bool IsDirty { get; set; }
@@ -140,52 +136,11 @@ namespace Sino.Dapper
         public static TableNameMapperDelegate TableNameMapper { get; set; }
         private static string GetTableName(Type type)
         {
-            string name;
-            if (IsOriginalTableName)
+            string name = ExpressionHelper.GetTableName(type.Name);
+            if (!ExpressionHelper.IsOriginalTableName)
             {
-                name = type.Name;
-                //if (TypeTableName.TryGetValue(type.TypeHandle, out name)) return name;
-
-                //if (TableNameMapper != null)
-                //{
-                //	name = TableNameMapper(type);
-                //}
-                //else
-                //{
-                //NOTE: This as dynamic trick should be able to handle both our own Table-attribute as well as the one in EntityFramework 
-                //var tableAttr = type.GetTypeInfo();
-                //if (tableAttr != null)
-                //	name = tableAttr.Name;
-                //else
-                //{
-            }
-            else
-            {
-                var length = type.Name.Length;
-                var last = type.Name.Substring(length - 1, 1);
-                if (last == "y")
-                {
-                    name = type.Name.Substring(0, length - 1) + "ies";
-                }
-                else if (last == "o")
-                {
-                    name = type.Name + "es";
-                }
-                else if (last == "s")
-                {
-                    name = type.Name;
-                }
-                else
-                {
-                    name = type.Name + "s";
-                }
-
                 if (type.IsInterface() && name.StartsWith("I"))
                     name = name.Substring(1);
-                //}
-                //}
-
-
             }
             TypeTableName[type.TypeHandle] = name;
             return name;
