@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>y-z-f</Authors>
     <Company>江苏斯诺物联科技有限公司</Company>
-    <Version>2.0.0-beta5</Version>
+    <Version>2.0.0-beta6</Version>
     <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
     <Description>基于Dapper的仓储库</Description>
     <PackageIconUrl>http://avatars0.githubusercontent.com/u/16951448?v=3&amp;s=70</PackageIconUrl>
@@ -13,7 +13,8 @@
     <PackageProjectUrl>https://github.com/Vip56/Sino.Extensions.Dapper</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Vip56/Sino.Extensions.Dapper.git</RepositoryUrl>
     <PackageTags />
-    <AssemblyVersion>2.0.0.5</AssemblyVersion>
+    <AssemblyVersion>2.0.0.6</AssemblyVersion>
+    <FileVersion>2.0.0.6</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
