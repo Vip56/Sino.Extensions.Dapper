@@ -25,12 +25,10 @@ namespace Sino.Extensions.Dapper.Attributes
             catch (Exception ex)
             {
                 //判断异常类型 如果是Sino异常则进行转发
-                if (ex is SinoException)
-                {
-                    var sex = ex as SinoException;
+                var sex = ex.InnerException as SinoException;
+                if (sex!=null)
                     throw new SinoException(sex.Message, sex.Code);
-                }
-                throw new Exception(ex.StackTrace);
+                throw new Exception(ex.Message,ex);
             }
         }
     }
