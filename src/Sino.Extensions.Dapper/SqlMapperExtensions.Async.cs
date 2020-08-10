@@ -653,6 +653,46 @@ namespace Sino.Dapper
             var deleted = await connection.ExecuteAsync(statement, null, transaction, commandTimeout).ConfigureAwait(false);
             return deleted > 0;
         }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="connection"></param>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="skip">页数</param>
+        /// <param name="count">每页数</param>
+        /// <param name="param">Sql参数</param>
+        /// <returns></returns>
+        public static async Task<Tuple<List<T>, int>> QueryPagingAsync<T>(this IDbConnection connection, string sql, int skip = 0, int count = 10, DynamicParameters param = null)
+        {
+            string sqllimit = " ";
+            if (param == null)
+                param = new DynamicParameters();
+            if (skip != -1)
+            {
+                sqllimit = " LIMIT @skip,@count";
+                param.Add("@skip", skip);
+                param.Add("@count", count);
+            }
+            string sqlpage = $@"SELECT page.*
+                                FROM (
+                                 {sql}
+                                ) page
+                                 {sqllimit};
+                                SELECT COUNT(1)
+                                FROM (
+                                 {sql}
+                                ) page";
+            var gridReader = await connection.QueryMultipleAsync(sqlpage, param);
+            if (!gridReader.IsConsumed)
+            {
+                var r1 = await gridReader.ReadAsync<T>();
+                var r2 = await gridReader.ReadFirstAsync<long>();
+                return new Tuple<List<T>, int>(r1.ToList(), (int)r2);
+            }
+            return default;
+        }
     }
 
 
